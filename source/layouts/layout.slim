@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
+    title == data.page.title || "Tabn.js"
+
+    == stylesheet_link_tag "style"
+    / link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"
+    == javascript_include_tag  "jquery"
+    == javascript_include_tag  "tabn"
+
+  body class="#{page_classes}"
+  == yield

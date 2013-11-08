@@ -1,0 +1,96 @@
+---
+title: Tabn.js
+---
+
+header.pageHeader.inner
+  .container
+    h1 Tabn.js
+    p Tab UI jQuery plugin Tabn.
+    p Build by middleman CoffeeScript
+
+.content.inner
+  .container
+    .tabWrap
+      ul.tab.wrap
+        li
+          a href="#install" インストール
+        li
+          a href="#howtouse" 使い方
+        li
+          a href="#option" オプション
+      ul.tabcontent
+        li#install
+          p htmlにタブを書く
+          pre
+            code
+              | &lt;div class="tabwrap"&gt;
+                  &lt;ul class="tab"&gt;
+                    &lt;li&gt;タブ1&lt;/li&gt;
+                    &lt;li&gt;タブ2&lt;/li&gt;
+                    &lt;li&gt;タブ3&lt;/li&gt;
+                  &lt;/ul&gt;
+                  &lt;ul class="tabcontent"&gt;
+                    &lt;li&gt;中身ですよ、中身。文句あっか&lt;/li&gt;
+                    &lt;li&gt;中身ですよ、中身。文句あっか&lt;/li&gt;
+                    &lt;li&gt;中身ですよ、中身。文句あっか&lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+          p css はお好みで。
+          p jQueryを読み込む
+          pre
+            code
+              | &lt;script src="//code.jquery.com/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+          p tabn.jsを読み込む
+          pre
+            code
+              | &lt;script src='/tabn.min.js'&gt;&lt;/script&gt;
+          p 準備は以上なります！
+
+        li#howtouse
+          p タブとタブのコンテンツをラップした要素をセレクターに指定
+          pre
+            code
+              | $(".tabwrap").tabn();
+          p アクティブタブとコンテンツには .active が付与される
+          p タブはデフォルトはセレクタ内の .tab 。変更したい場合はオプションを付与。
+          pre
+            code
+              | $(".tabwrap").tabn({tab:".tabtab"});
+          p タブの中身はデフォルトはセレクタ内の .tabcontent 。変更したい場合はオプションを付与。
+          pre
+            code
+              | $(".tabwrap").tabn({tabcontent:".nakami"});
+          p アニメーションでの切り替えが可能
+          pre
+            code
+              | $(".tabwrap").tabn({animation:true});
+          p cssでアクティブ以外を非表示としている場合は tabn({hide:false})
+          pre
+            code
+              | $(".tabwrap").tabn({hide:false});
+
+        li#option
+          table
+            tr
+              td tab
+              td タブの要素（デフォルトは .tab ）
+            tr
+              td content
+              td タブの中身の要素（デフォルトは .tabcontent ）
+            tr
+              td hide
+              td cssでの削除可否（デフォルトは true ）
+            tr
+              td animation
+              td アニメーション可否（デフォルトは false ）
+            tr
+              td hidetime
+              td アニメーションの消える秒数（デフォルトは 200 ）
+            tr
+              td disptime
+              td アニメーションの表示する秒数（デフォルトは 400 ）
+  footer.pageFooter
+    p.copyrightlupin.js Created by <a href="http://anticyb.org/" target="_blank">muyuu</a>
+
+javascript:
+  $(".tabWrap").tabn({animation:true});
