@@ -761,19 +761,50 @@ h3 {
 .small {
   font-size: 75%; }
 
-/* line 19, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+/* line 17, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+.btn01 {
+  display: inline-block;
+  padding: 0.4em 1em;
+  color: #eeeeee;
+  background: #92dbbb;
+  border: 1px solid #eeeeee;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.6);
+  /* FF3.5+ */
+  -webkit-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.6);
+  /* Saf3.0+, Chrome */
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.6);
+  /* Opera 10.5, IE9 */
+  font-size: 2em;
+  vertical-align: middle; }
+  /* line 31, /Users/muyuu/Dropbox/www/github/tabn/source/css/common/_btn.sass */
+  .btn01:hover, .btn01:active, .btn01:focus {
+    color: #92dbbb;
+    background: #eeeeee; }
+  /* line 34, /Users/muyuu/Dropbox/www/github/tabn/source/css/common/_btn.sass */
+  .btn01:visited {
+    color: #eeeeee; }
+    /* line 36, /Users/muyuu/Dropbox/www/github/tabn/source/css/common/_btn.sass */
+    .btn01:visited:hover, .btn01:visited:active {
+      color: #92dbbb; }
+  /* line 21, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+  .btn01 i {
+    font-size: 1.2em; }
+
+/* line 26, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
 .tabWrap {
   margin: 20px 0; }
 
-/* line 22, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+/* line 29, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
 .tab {
   border-bottom: 1px solid #6fb999; }
-  /* line 24, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+  /* line 31, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
   .tab li {
     float: left;
     width: 30%;
     margin: 0 3% -1px 0; }
-    /* line 28, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+    /* line 35, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
     .tab li a {
       display: block;
       padding: 8px 4px;
@@ -782,19 +813,19 @@ h3 {
       border-radius: 4px 4px 0 0;
       background: #6fb999;
       color: white; }
-  /* line 37, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+  /* line 44, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
   .tab .active a {
     border-bottom-color: white;
     background: white;
     color: #6fb999; }
 
-/* line 42, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+/* line 49, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
 .tabcontent {
   border: 1px solid #6fb999;
   border-top: none; }
-  /* line 45, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+  /* line 52, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
   .tabcontent li {
     padding: 10px; }
-    /* line 47, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
+    /* line 54, /Users/muyuu/Dropbox/www/github/tabn/source/css/_site-module.sass */
     .tabcontent li p {
       margin-top: 2em; }
