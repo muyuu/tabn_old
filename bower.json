@@ -1,0 +1,14 @@
+{
+    "name": "tabn",
+    "version": "1.0.0",
+    "main": "build/js/tabn.js",
+    "ignore": [
+        "docs/**",
+        "node_modules/*",
+        "source/**",
+        ".gitignore",
+        "Gruntfile.coffee",
+        "index.html",
+        "package.json"
+    ]
+}

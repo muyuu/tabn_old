@@ -1,0 +1,13 @@
+{
+  "name": "tabn",
+  "version": "0.0.1",
+  "description": "Simple tab jQuery plugin",
+  "main": "build/js/tabn.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/muyuu/tabn",
+  "author": "muyuu",
+  "homepage": "http://anticyb.org/",
+  "license": "BSD"
+}
