@@ -9,33 +9,34 @@ header.pageHeader.inner
     p Build by middleman CoffeeScript
     p
       a.btn01 href="https://github.com/muyuu/tabn" target="_blank"
-        | <i class="fa fa-github"></i> download tabn.js
+        i.fa.fa-github
+        | download tabn.js
 
 .content.inner
   .container
     .tabWrap
-      ul.tab.wrap
-        li
+      ul.tabs.wrap
+        li.tab
           a href="#install" インストール
-        li
+        li.tab
           a href="#howtouse" 使い方
-        li
+        li.tab
           a href="#option" オプション
-      ul.tabcontent
-        li#install
+      ul.tabcontents
+        li#install.tabcontent
           p htmlにタブを書く
           pre
             code
               | &lt;div class="tabwrap"&gt;
-                  &lt;ul class="tab"&gt;
-                    &lt;li&gt;タブ1&lt;/li&gt;
-                    &lt;li&gt;タブ2&lt;/li&gt;
-                    &lt;li&gt;タブ3&lt;/li&gt;
+                  &lt;ul class="tasb"&gt;
+                    &lt;li class="tab"&gt;タブ1&lt;/li&gt;
+                    &lt;li class="tab"&gt;タブ2&lt;/li&gt;
+                    &lt;li class="tab"&gt;タブ3&lt;/li&gt;
                   &lt;/ul&gt;
-                  &lt;ul class="tabcontent"&gt;
-                    &lt;li&gt;中身ですよ、中身。文句あっか&lt;/li&gt;
-                    &lt;li&gt;中身ですよ、中身。文句あっか&lt;/li&gt;
-                    &lt;li&gt;中身ですよ、中身。文句あっか&lt;/li&gt;
+                  &lt;ul class="tabcontents"&gt;
+                    &lt;li class="tabcontent"&gt;中身ですよ、中身。文句あっか&lt;/li&gt;
+                    &lt;li class="tabcontent"&gt;中身ですよ、中身。文句あっか&lt;/li&gt;
+                    &lt;li class="tabcontent"&gt;中身ですよ、中身。文句あっか&lt;/li&gt;
                   &lt;/ul&gt;
                 &lt;/div&gt;
           p css はお好みで。
@@ -47,22 +48,24 @@ header.pageHeader.inner
           pre
             code
               | &lt;script src='/tabn.min.js'&gt;&lt;/script&gt;
-          p 準備は以上なります！
+          p 準備は以上になります！
 
-        li#howtouse
+        li#howtouse.tabcontent
           p タブとタブのコンテンツをラップした要素をセレクターに指定
           pre
             code
               | $(".tabwrap").tabn();
           p アクティブタブとコンテンツには .active が付与される
-          p タブはデフォルトはセレクタ内の .tab 。変更したい場合はオプションを付与。
+          p タブはデフォルトはセレクタ内の .tab 。
+          p タブをラップする要素はデフォルトはセレクタ内の .tabs 。変更したい場合はオプションを付与。
           pre
             code
-              | $(".tabwrap").tabn({tab:".tabtab"});
-          p タブの中身はデフォルトはセレクタ内の .tabcontent 。変更したい場合はオプションを付与。
+              | $(".tabwrap").tabn({tabs:".tabtab"});
+          p タブの中身はデフォルトはセレクタ内の .tabcontent。
+          p タブの中身をラップする要素はデフォルトはセレクタ内の .tabcontents 。変更したい場合はオプションを付与。
           pre
             code
-              | $(".tabwrap").tabn({tabcontent:".nakami"});
+              | $(".tabwrap").tabn({tabcontents:".nakami"});
           p アニメーションでの切り替えが可能
           pre
             code
@@ -72,14 +75,14 @@ header.pageHeader.inner
             code
               | $(".tabwrap").tabn({hide:false});
 
-        li#option
+        li#option.tabcontent
           table
             tr
-              td tab
-              td タブの要素（デフォルトは .tab ）
+              td tabs
+              td タブの要素（デフォルトは .tabs ）
             tr
-              td content
-              td タブの中身の要素（デフォルトは .tabcontent ）
+              td contents
+              td タブの中身の要素（デフォルトは .tabcontents ）
             tr
               td hide
               td cssでの削除可否（デフォルトは true ）

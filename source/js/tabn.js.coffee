@@ -1,13 +1,14 @@
 ( ($)->
   $.fn.tabn = ( options ) ->
 
-    ele = @
+    # "this" is wrapped tag
+    plugin = @
     tabName = ""
 
     # option
     defaults =
-      tab: ".tab"
-      content: ".tabcontent"
+      tabs: ".tabs"
+      content: ".tabcontents"
       hide: true
       animation: false
       hidetime: 200
@@ -15,51 +16,55 @@
 
     opts = $.extend({}, defaults, options)
 
-    tab = $(ele).find(opts.tab)
-    content = $(ele).find(opts.content)
+    tabs = $(plugin).find(opts.tabs)
+    content = $(plugin).find(opts.content)
 
     #content
     changeClass = () ->
-      content.find("li").removeClass "active"
-      content.find("li##{tabName}").addClass "active"
+      content.find(".tabcontent").removeClass "active"
+      content.find(".tabcontent##{tabName}").addClass "active"
 
     # not controll for css display
     hideElement = () ->
-      content.find("li").hide()
-      content.find("li##{tabName}").show()
+      content.find(".tabcontent").hide()
+      content.find(".tabcontent##{tabName}").show()
 
-    ele.init = () ->
+    plugin.init = () ->
       # add active first cotent
-      tabName = tab.find("li:first a").attr("href").replace("#", "")
-      ele.trigger "change.tabs", tabName
+      tabName = tabs.find(".tab:first a").attr("href").replace("#", "")
+      plugin.trigger "change.tabs", tabName
 
     # add custom event when tab click
-    ele.delegate "li", "click", (e)->
+    plugin.delegate ".tab", "click", (e)->
       e.preventDefault()
       tabName = $(@).find("a").attr('href').replace("#", "")
 
       # set trigger custom event
-      ele.trigger "change.tabs", tabName
+      plugin.trigger "change.tabs", tabName
 
     # bind costom torigger
-    ele.bind "change.tabs", ( e, tabName )->
+    plugin.bind "change.tabs", ( e, tabName )->
       # console.log "trigger"
 
       # tab
-      tab.find("li").removeClass "active"
-      tab.find("li a[href=##{tabName}]").parent().addClass "active"
+      tabs.find(".tab").removeClass "active"
+      tabs.find(".tab a[href=##{tabName}]").parent().addClass "active"
 
       # animation
       if opts.animation is true
-        content.find("li").animate "opacity":0, opts.hidetime, ()->
-          hideElement()
-        content.find("li##{tabName}").animate "opacity":1, opts.disptime
+        content.find(".tabcontent").animate
+          "opacity":0,
+          opts.hidetime,
+          ()->
+            hideElement()
+        content.find(".tabcontent##{tabName}").animate "opacity":1,
+          opts.disptime
       else
         if opts.hide is true
           hideElement()
         changeClass()
 
-    ele.init()
+    plugin.init()
 
-    return ele
+    return plugin
 ) jQuery
