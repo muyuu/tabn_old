@@ -1,1 +1,59 @@
-!function(){!function(t){return t.fn.tabn=function(n){var e,i,a,r,c,f,d,o;return f=this,d="",a={tabs:".tabs",content:".tabcontents",hide:!0,animation:!1,hidetime:200,disptime:400},c=t.extend({},a,n),o=t(f).find(c.tabs),i=t(f).find(c.content),e=function(){return i.find(".tabcontent").removeClass("active"),i.find(".tabcontent#"+d).addClass("active")},r=function(){return i.find(".tabcontent").hide(),i.find(".tabcontent#"+d).show()},f.init=function(){return d=o.find(".tab:first a").attr("href").replace("#",""),f.trigger("change.tabs",d)},f.delegate(".tab","click",function(n){return n.preventDefault(),d=t(this).find("a").attr("href").replace("#",""),f.trigger("change.tabs",d)}),f.bind("change.tabs",function(t,n){return o.find(".tab").removeClass("active"),o.find(".tab a[href=#"+n+"]").parent().addClass("active"),c.animation===!0?(i.find(".tabcontent").animate({opacity:0},c.hidetime,function(){return r()}),i.find(".tabcontent#"+n).animate({opacity:1},c.disptime)):(c.hide===!0&&r(),e())}),f.init(),f}}(jQuery)}.call(this);
+(function() {
+  (function($) {
+    return $.fn.tabn = function(options) {
+      var changeClass, content, defaults, hideElement, opts, plugin, tabName, tabs;
+      plugin = this;
+      tabName = "";
+      defaults = {
+        tabs: ".tabs",
+        content: ".tabcontents",
+        hide: true,
+        animation: false,
+        hidetime: 200,
+        disptime: 400
+      };
+      opts = $.extend({}, defaults, options);
+      tabs = $(plugin).find(opts.tabs);
+      content = $(plugin).find(opts.content);
+      changeClass = function() {
+        content.find(".tabcontent").removeClass("active");
+        return content.find(".tabcontent#" + tabName).addClass("active");
+      };
+      hideElement = function() {
+        content.find(".tabcontent").hide();
+        return content.find(".tabcontent#" + tabName).show();
+      };
+      plugin.init = function() {
+        tabName = tabs.find(".tab:first a").attr("href").replace("#", "");
+        return plugin.trigger("change.tabs", tabName);
+      };
+      plugin.delegate(".tab", "click", function(e) {
+        e.preventDefault();
+        tabName = $(this).find("a").attr('href').replace("#", "");
+        return plugin.trigger("change.tabs", tabName);
+      });
+      plugin.bind("change.tabs", function(e, tabName) {
+        tabs.find(".tab").removeClass("active");
+        tabs.find(".tab a[href=#" + tabName + "]").parent().addClass("active");
+        if (opts.animation === true) {
+          content.find(".tabcontent").animate({
+            "opacity": 0
+          }, opts.hidetime, function() {
+            return hideElement();
+          });
+          return content.find(".tabcontent#" + tabName).animate({
+            "opacity": 1
+          }, opts.disptime);
+        } else {
+          if (opts.hide === true) {
+            hideElement();
+          }
+          return changeClass();
+        }
+      });
+      plugin.init();
+      return plugin;
+    };
+  })(jQuery);
+
+}).call(this);
