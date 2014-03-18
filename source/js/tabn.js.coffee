@@ -8,7 +8,9 @@
     # option
     defaults =
       tabs: ".tabs"
-      content: ".tabcontents"
+      tab: ".tab"
+      contents: ".tabcontents"
+      content: ".tabcontent"
       hide: true
       animation: false
       hidetime: 200
@@ -17,25 +19,25 @@
     opts = $.extend({}, defaults, options)
 
     tabs = $(plugin).find(opts.tabs)
-    content = $(plugin).find(opts.content)
+    contents = $(plugin).find(opts.contents)
 
     #content
     changeClass = () ->
-      content.find(".tabcontent").removeClass "active"
-      content.find(".tabcontent##{tabName}").addClass "active"
+      contents.find(opts.content).removeClass "active"
+      contents.find(opts.content + "#" + tabName).addClass "active"
 
     # not controll for css display
     hideElement = () ->
-      content.find(".tabcontent").hide()
-      content.find(".tabcontent##{tabName}").show()
+      contents.find(opts.content).hide()
+      contents.find(opts.content + "#" + tabName).show()
 
     plugin.init = () ->
       # add active first cotent
-      tabName = tabs.find(".tab:first a").attr("href").replace("#", "")
+      tabName = tabs.find(opts.tab + ":first a").attr("href").replace("#", "")
       plugin.trigger "change.tabs", tabName
 
     # add custom event when tab click
-    plugin.delegate ".tab", "click", (e)->
+    plugin.delegate opts.tab, "click", (e)->
       e.preventDefault()
       tabName = $(@).find("a").attr('href').replace("#", "")
 
@@ -47,17 +49,17 @@
       # console.log "trigger"
 
       # tab
-      tabs.find(".tab").removeClass "active"
-      tabs.find(".tab a[href=##{tabName}]").parent().addClass "active"
+      tabs.find(opts.tab).removeClass "active"
+      tabs.find(opts.tab + " a[href=#" + tabName + "]").parent().addClass "active"
 
       # animation
       if opts.animation is true
-        content.find(".tabcontent").animate
+        contents.find(opts.content).animate
           "opacity":0,
           opts.hidetime,
           ()->
             hideElement()
-        content.find(".tabcontent##{tabName}").animate "opacity":1,
+        contents.find(opts.content + "#" + tabName).animate "opacity":1,
           opts.disptime
       else
         if opts.hide is true

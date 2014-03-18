@@ -1,12 +1,14 @@
 (function() {
   (function($) {
     return $.fn.tabn = function(options) {
-      var changeClass, content, defaults, hideElement, opts, plugin, tabName, tabs;
+      var changeClass, contents, defaults, hideElement, opts, plugin, tabName, tabs;
       plugin = this;
       tabName = "";
       defaults = {
         tabs: ".tabs",
-        content: ".tabcontents",
+        tab: ".tab",
+        contents: ".tabcontents",
+        content: ".tabcontent",
         hide: true,
         animation: false,
         hidetime: 200,
@@ -14,34 +16,34 @@
       };
       opts = $.extend({}, defaults, options);
       tabs = $(plugin).find(opts.tabs);
-      content = $(plugin).find(opts.content);
+      contents = $(plugin).find(opts.contents);
       changeClass = function() {
-        content.find(".tabcontent").removeClass("active");
-        return content.find(".tabcontent#" + tabName).addClass("active");
+        contents.find(opts.content).removeClass("active");
+        return contents.find(opts.content + "#" + tabName).addClass("active");
       };
       hideElement = function() {
-        content.find(".tabcontent").hide();
-        return content.find(".tabcontent#" + tabName).show();
+        contents.find(opts.content).hide();
+        return contents.find(opts.content + "#" + tabName).show();
       };
       plugin.init = function() {
-        tabName = tabs.find(".tab:first a").attr("href").replace("#", "");
+        tabName = tabs.find(opts.tab + ":first a").attr("href").replace("#", "");
         return plugin.trigger("change.tabs", tabName);
       };
-      plugin.delegate(".tab", "click", function(e) {
+      plugin.delegate(opts.tab, "click", function(e) {
         e.preventDefault();
         tabName = $(this).find("a").attr('href').replace("#", "");
         return plugin.trigger("change.tabs", tabName);
       });
       plugin.bind("change.tabs", function(e, tabName) {
-        tabs.find(".tab").removeClass("active");
-        tabs.find(".tab a[href=#" + tabName + "]").parent().addClass("active");
+        tabs.find(opts.tab).removeClass("active");
+        tabs.find(opts.tab + " a[href=#" + tabName + "]").parent().addClass("active");
         if (opts.animation === true) {
-          content.find(".tabcontent").animate({
+          contents.find(opts.content).animate({
             "opacity": 0
           }, opts.hidetime, function() {
             return hideElement();
           });
-          return content.find(".tabcontent#" + tabName).animate({
+          return contents.find(opts.content + "#" + tabName).animate({
             "opacity": 1
           }, opts.disptime);
         } else {
